@@ -5,6 +5,7 @@ import { AppState } from './../app.state';
 import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs/Observable';
 import { RESTService } from './../services/ua-http.service';
+import { NavObject } from './../app.model'
 
 @Component({
   selector: 'app-mega-menu',
@@ -21,8 +22,8 @@ export class MegaMenuComponent implements OnInit {
   ngOnInit() {
     let megaMenu:MegaMenuModel[];
     let that = this;
-    this.restservice.getMegaMenu('').subscribe(function(res: Array<MegaMenuModel>){
-      megaMenu = res;
+    this.restservice.getMegaMenu('').subscribe(function(res: NavObject){
+      megaMenu = res.nav;
       for(let megaMenuItem of megaMenu) {
         that.store.dispatch({
           type: 'MEGA_MENU',

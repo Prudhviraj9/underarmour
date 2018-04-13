@@ -53,11 +53,7 @@
     display: block;
 }
 
-@media (min-width: 991px) {
-    .shop-now-container:last-child .head-desc-container {
-        background: #f0f0f0;
-    }
-}
+
 
 @media (max-width: 991px) {
     .head-desc-container {

@@ -19,11 +19,23 @@ export class ProductButtonComponent implements OnInit {
    ngOnInit() {
     let productButton:ProductButton[];
 
-    let that = this;
-    this.restservice.getProductButton('').subscribe(function(res: Array<ProductButton>) {
-      productButton = res;
+      productButton = [
+        {
+          buttonText: "WOMEN",
+          link: "google.com"
+        }, {
+          buttonText: "MEN",
+          link: "google.com"
+        }, {
+          buttonText: "GIRLS",
+          link: "google.com"
+        }, {
+          buttonText: "BOYS",
+          link: "google.com"
+        },
+      ];
       for(let productButtonItem of productButton) {
-        that.store.dispatch({
+        this.store.dispatch({
           type: 'PRODUCT_BUTTON',
           payload: <ProductButton> {
             buttonText: productButtonItem.buttonText,
@@ -31,6 +43,5 @@ export class ProductButtonComponent implements OnInit {
           }
         });
       }
-    });
   }
 }

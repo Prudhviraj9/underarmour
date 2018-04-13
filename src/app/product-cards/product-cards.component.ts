@@ -4,6 +4,7 @@ import { AppState } from './../app.state';
 import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs/Observable';
 import { RESTService } from './../services/ua-http.service';
+import { ResultsObject } from './../app.model';
 
 @Component({
   selector: 'app-product-cards',
@@ -22,8 +23,8 @@ export class ProductCardsComponent implements OnInit {
     let productCards:ProductCards[];
 
     let that = this;
-    this.restservice.getProductCardsData('').subscribe(function(res: Array<ProductCards>){
-      productCards = res;
+    this.restservice.getProductCardsData('').subscribe(function(res: ResultsObject){
+      productCards = res.results;
       for(let product of productCards) {
         that.store.dispatch({
           type: 'PRODUCT_CARDS',

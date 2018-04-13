@@ -4,6 +4,7 @@ import { AppState } from './../app.state';
 import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs/Observable';
 import { RESTService } from './../services/ua-http.service';
+import { ResultsObject } from './../app.model'
 
 @Component({
   selector: 'app-header-banner',
@@ -21,16 +22,14 @@ export class HeaderBannerComponent implements OnInit {
   ngOnInit() {
     let headerBanner:HeaderBanner[];
     let that = this;
-    this.restservice.getHeaderBanner('').subscribe(function(res: Array<HeaderBanner>){
-      headerBanner = res;
+    this.restservice.getHeaderBanner('').subscribe(function(res: ResultsObject){
+      headerBanner = res.results;
       for(let headerBannerItem of headerBanner) {
         that.store.dispatch({
           type: 'HEADER_BANNER',
           payload: <HeaderBanner> headerBannerItem
         });
       }
-    })
-    
+    }) 
   }
-
 }

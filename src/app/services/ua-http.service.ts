@@ -11,36 +11,29 @@ export class RESTService {
 
     getShopNowData(countryName) {
         if(countryName) {
-            return this.http.get('http://localhost:3000/shopNow?countryName='+countryName);
+            return this.http.get('http://ec2-18-217-68-79.us-east-2.compute.amazonaws.com:4503/bin/underarmour/search?searchTerm=portais,autre&locale=fr');
         }
         return this.http.get('http://ec2-18-217-68-79.us-east-2.compute.amazonaws.com:4503/bin/underarmour/search?searchTerm=downtime,outfitting,hooked');
     }
 
     getProductCardsData(countryName) {
         if(countryName) {
-            return this.http.get('http://localhost:3000/productCards?countryName='+countryName);
+            return this.http.get('http://ec2-18-217-68-79.us-east-2.compute.amazonaws.com:4503/bin/underarmour/search?searchTerm=perpetual,chaussures,blouson&locale=fr');
         }
-        return this.http.get('http://localhost:3000/productCards');
-    }
-
-    getProductButton(countryName) {
-        if(countryName) {
-            return this.http.get('http://localhost:3000/productButton?countryName='+countryName);
-        }
-        return this.http.get('http://localhost:3000/productButton');
+        return this.http.get('http://ec2-18-217-68-79.us-east-2.compute.amazonaws.com:4503/bin/underarmour/search?searchTerm=Hoodies,gear,customized');
     }
 
     getMegaMenu(countryName) {
         if(countryName) {
-            return this.http.get('http://localhost:3000/megaMenu?countryName='+countryName);
+            return this.http.get('http://ec2-18-217-68-79.us-east-2.compute.amazonaws.com:4503/bin/underarmour/nav&locale=fr');
         }
-        return this.http.get('http://localhost:3000/megaMenu');
+        return this.http.get('http://ec2-18-217-68-79.us-east-2.compute.amazonaws.com:4503/bin/underarmour/nav');
     }
 
     getHeaderBanner(countryName) {
         if(countryName) {
-            return this.http.get('http://localhost:3000/headerBanner?countryName='+countryName);
+            return this.http.get('http://ec2-18-217-68-79.us-east-2.compute.amazonaws.com:4503/bin/underarmour/search?searchTerm=lifts&locale=fr');
         }
-        return this.http.get('http://localhost:3000/headerBanner');
+        return this.http.get('http://ec2-18-217-68-79.us-east-2.compute.amazonaws.com:4503/bin/underarmour/search?searchTerm=lifts');
     }
 }

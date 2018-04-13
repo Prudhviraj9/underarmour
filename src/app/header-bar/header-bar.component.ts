@@ -7,6 +7,9 @@ import { ShopNow } from './../shop-now/shop-now.model';
 import { ProductButton } from './../product-button/product-button.model';
 import { ProductCards } from './../product-cards/product-cards.model'
 import { RESTService } from './../services/ua-http.service';
+import { HeaderBanner } from './../header-banner/header-banner.model';
+import { ResultsObject, NavObject } from './../app.model';
+import { MegaMenuModel } from './../mega-menu/mega-menu.model';
 
 @Component({
   selector: 'app-header-bar',
@@ -24,13 +27,14 @@ export class HeaderBarComponent implements OnInit {
 
   callType(value) {
     let shopNow:ShopNow[];
-    let productButton:ProductButton[];
     let productCards:ProductCards[];
+    let headerBanner:HeaderBanner[];
+    let megaMenu:MegaMenuModel[];
     let that = this;
 
     //update shopnow component
-    this.restservice.getShopNowData(value).subscribe(function(res: Array<ShopNow>){
-      shopNow = res;
+    this.restservice.getShopNowData(value).subscribe(function(res: ResultsObject){
+      shopNow = res.results;
       that.store.dispatch({
         type: 'CLEAR_SHOP_NOW'
       });
@@ -48,25 +52,23 @@ export class HeaderBarComponent implements OnInit {
       }
     });
 
-    //update product button component
-    this.restservice.getProductButton(value).subscribe(function(res: Array<ProductButton>) {
-      productButton = res;
+    //update shopnow component
+    this.restservice.getHeaderBanner(value).subscribe(function(res: ResultsObject){
+      headerBanner = res.results;
       that.store.dispatch({
-        type: 'CLEAR_PRODUCT_BUTTON'
+        type: 'CLEAR_HEADER_BANNER'
       });
-      for(let productButtonItem of productButton) {
+      for(let headerBannerItem of headerBanner) {
         that.store.dispatch({
-          type: 'PRODUCT_BUTTON',
-          payload: <ProductButton> {
-            buttonText: productButtonItem.buttonText
-          }
+          type: 'HEADER_BANNER',
+          payload: <HeaderBanner> headerBannerItem
         });
       }
-    });
+    })
 
     //update product cards component
-    this.restservice.getProductCardsData(value).subscribe(function(res: Array<ProductCards>){
-      productCards = res;
+    this.restservice.getProductCardsData(value).subscribe(function(res: ResultsObject){
+      productCards = res.results;
       that.store.dispatch({
         type: 'CLEAR_PRODUCT_CARDS'
       });
@@ -81,6 +83,20 @@ export class HeaderBarComponent implements OnInit {
         });
       }
     });
+
+    //Update Mega Menu
+    this.restservice.getMegaMenu('').subscribe(function(res: NavObject){
+      megaMenu = res.nav;
+      that.store.dispatch({
+        type: 'CLEAR_MEGA_MENU'
+      });
+      for(let megaMenuItem of megaMenu) {
+        that.store.dispatch({
+          type: 'MEGA_MENU',
+          payload: <MegaMenuModel> megaMenuItem
+        });
+      }
+    });
   }
 
   ngOnInit() {
@@ -89,7 +105,7 @@ export class HeaderBarComponent implements OnInit {
       {
         countryName: "America"
       }, {
-        countryName: "India"
+        countryName: "French"
       }
     ]
     for(let country of headerBar) {
