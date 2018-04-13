@@ -4,4 +4,5 @@ export class ShopNow {
     isFullWidth: Boolean;
     header: String;
     description: String;
+    link: String;
 }

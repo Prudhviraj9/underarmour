@@ -7,6 +7,8 @@ export function productButtonReducer(state: ProductButton[] = [], action) {
     switch (action.type) {
         case PRODUCT_BUTTON:
             return [...state, action.payload];
+        case 'CLEAR_PRODUCT_BUTTON':
+                state = undefined;
         default:
             return state;
     }

@@ -7,6 +7,8 @@ export function headerBannerReducer(state: HeaderBanner[] = [], action) {
     switch (action.type) {
         case HEADER_BANNER:
             return [...state, action.payload];
+        case 'CLEAR_HEADER_BANNER':
+            state = undefined;
         default:
             return state;
     }

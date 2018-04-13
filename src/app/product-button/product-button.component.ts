@@ -20,13 +20,14 @@ export class ProductButtonComponent implements OnInit {
     let productButton:ProductButton[];
 
     let that = this;
-    this.restservice.getProductButton().subscribe(function(res: Array<ProductButton>) {
+    this.restservice.getProductButton('').subscribe(function(res: Array<ProductButton>) {
       productButton = res;
       for(let productButtonItem of productButton) {
         that.store.dispatch({
           type: 'PRODUCT_BUTTON',
           payload: <ProductButton> {
-            buttonText: productButtonItem.buttonText
+            buttonText: productButtonItem.buttonText,
+            link: productButtonItem.link
           }
         });
       }

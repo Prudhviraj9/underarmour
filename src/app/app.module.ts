@@ -23,6 +23,7 @@ import { ProductCardsComponent } from './product-cards/product-cards.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 
 import { RESTService } from './services/ua-http.service';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { RESTService } from './services/ua-http.service';
     ProductButtonComponent,
     HeaderBannerComponent,
     ProductCardsComponent,
-    HeaderBarComponent
+    HeaderBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@ export class ProductCardsComponent implements OnInit {
     let productCards:ProductCards[];
 
     let that = this;
-    this.restservice.getProductCardsData().subscribe(function(res: Array<ProductCards>){
+    this.restservice.getProductCardsData('').subscribe(function(res: Array<ProductCards>){
       productCards = res;
       for(let product of productCards) {
         that.store.dispatch({
@@ -30,7 +30,8 @@ export class ProductCardsComponent implements OnInit {
           payload: <ProductCards> {
             img: product.img,
             buttonText: product.buttonText,
-            description: product.description
+            description: product.description,
+            link: product.link
           }
         });
       }

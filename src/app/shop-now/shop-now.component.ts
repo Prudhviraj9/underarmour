@@ -4,33 +4,27 @@ import { AppState } from './../app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { RESTService } from './../services/ua-http.service';
-import { EventsService } from './../services/ua-events.service';
+import { ResultsObject } from './../app.model'
 
 @Component({
   selector: 'app-shop-now',
   templateUrl: './shop-now.component.html',
-  styleUrls: ['./shop-now.component.css'],
-  providers: [EventsService]
+  styleUrls: ['./shop-now.component.css']
 })
 export class ShopNowComponent implements OnInit {
 
   shopNow: Observable<ShopNow>;
   
-  constructor(private store: Store<AppState>, private restservice: RESTService, private eventsService: EventsService) {
+  constructor(private store: Store<AppState>, private restservice: RESTService) {
     this.shopNow = this.store.select(state => state.shopnow);
-    eventsService.countryChanged$.subscribe(
-      country => {
-        debugger;
-      });
-    
   }
 
   ngOnInit() {
-    this.eventsService.changeCountry("value");
     let shopNow:ShopNow[];
     let that = this;
-    this.restservice.getShopNowData().subscribe(function(res: Array<ShopNow>){
-      shopNow = res;
+    this.restservice.getShopNowData('').subscribe(function(res: ResultsObject){
+      shopNow = res.results;
+      debugger;
       for(let shopNowItem of shopNow) {
         that.store.dispatch({
           type: 'SHOP_NOW',
@@ -39,12 +33,11 @@ export class ShopNowComponent implements OnInit {
             buttonText: shopNowItem.buttonText,
             isFullWidth: shopNowItem.isFullWidth,
             header: shopNowItem.header,
-            description: shopNowItem.description
+            description: shopNowItem.description,
+            link: shopNowItem.link
           }
         });
       }
     });
-   
-    
   }
 }

@@ -7,6 +7,8 @@ export function headerBarReducer(state: HeaderBar[] = [], action) {
     switch (action.type) {
         case HEADER_BAR:
             return [...state, action.payload];
+        case 'CLEAR_HEADER_BAR':
+            state = undefined;
         default:
             return state;
     }

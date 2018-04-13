@@ -8,6 +8,8 @@ export function productCardsReducer(state: ProductCards[] = [], action) {
     switch (action.type) {
         case PRODUCT_CARDS:
             return [...state, action.payload];
+        case 'CLEAR_PRODUCT_CARDS':
+            state = undefined;
         default:
             return state;
     }
