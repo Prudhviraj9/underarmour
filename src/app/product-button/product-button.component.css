@@ -1,0 +1,21 @@
+.button a {
+    padding: 11.5px 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border: 2px solid #1d1d1d;
+    transition: all .5s ease;
+    font-size: 13px;
+    font-weight: 700;
+    color: #000;
+}
+.button a:hover {
+    text-decoration: none;
+    background-color: #1d1d1d;
+    color: #fff;
+}
+
+@media (max-width: 991px) {
+    .button a {
+        padding: 7px 10px;
+    }
+}

@@ -1,0 +1,7 @@
+.image-container img{
+    width: 100%;
+}
+.no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

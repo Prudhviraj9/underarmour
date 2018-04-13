@@ -1,0 +1,16 @@
+<div class="row no-margin">
+    <div class="col-12 no-padding shop-now-container text-center" [ngClass]="{'col-sm-6': !shop.isFullWidth}" *ngFor="let shop of shopNow | async">
+      <div class="image-container">
+          <img src="{{shop.img}}" alt="shop image" class="shop-now"/>
+          <a href="#" class="shop-now-button">
+            <span>{{shop.buttonText}}</span>
+          </a>
+      </div>
+      <app-header-description class="head-desc-container" header="{{shop.header}}" description="{{shop.description}}"></app-header-description>
+      <a href="#" class="d-sm-none d-inline-block shop-now-button-mobile">
+          <span>{{shop.buttonText}}</span>
+        </a>
+    </div>
+    
+</div>
+  

@@ -1,0 +1,17 @@
+.header, .description {
+    font-family: underarmour,Arial,sans-serif;
+}
+
+.head-desc-container .header {
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.head-desc-container .description {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 400;
+    margin-bottom: 25px;
+}

@@ -1,0 +1,25 @@
+.header-bar {
+    background: #1d1d1d;
+    color: #FFF;
+    font-family: underarmour,Arial,sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 3px 40px;
+}
+
+.header-bar span {
+    max-width: 72vw;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.header-bar select {
+    background: #1d1d1d;
+    color: #fff;
+    border: none;
+    padding-left: 20px;
+}
+
+.header-bar select:focus {
+    border: none;
+}

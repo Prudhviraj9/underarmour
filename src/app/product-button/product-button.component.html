@@ -1,0 +1,7 @@
+<div class="product-button-container d-flex  justify-content-center">
+  <div class="button" *ngFor="let button of productButton | async">
+    <a href="#">
+        {{button.buttonText}}
+    </a>
+  </div>
+</div>

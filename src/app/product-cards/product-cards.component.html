@@ -1,0 +1,12 @@
+<div class="row product-cards-container">
+    <div class="col-12 col-sm-4" *ngFor="let product of productCards | async">
+      <div class="image-container">
+          <img src="{{product.img}}" alt="shop image" class="shop-now"/>
+          <a href="#" class="shop-now-button">
+            <span>{{product.buttonText}}</span>
+          </a>
+      </div>
+      <div class="desc text-center">{{product.description}}</div>
+    </div>
+</div>
+  

@@ -1,0 +1,71 @@
+<div class="col-12 d-none d-sm-block mega-menu">
+  <ul class="d-flex col-8 offset-2 mega-menu-desktop justify-content-center">
+    <li class="mega-menu-desktop-item" *ngFor="let menu of megaMenu | async">
+      <a href="#" class="menu-title">
+        <span>{{menu.menuTitle}}</span>
+      </a>
+      <ul class="sub-menu d-none">
+        <li class="sub-menu-item" *ngFor="let subMenu of menu.subMenu">
+          <span>{{subMenu.menuTitle}}</span>
+          <ul class="sub-menu-list">
+            <li class="sub-menu-list-item" *ngFor="let subMenuList of subMenu.subMenu">
+              <span>{{subMenuList}}</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="icons-container-desktop">
+    <div class="logo float-left">
+      <a href="#" class="text-center">
+        <i class="icon logo-icon"></i>
+      </a>
+    </div>
+    <div class="search-fav-icons float-right d-flex">
+      <input name="q" type="search" autocomplete="off" id="ua-top-nav-search" class="search-input ua-typeahead-input" placeholder="Search"
+        value="" spellcheck="false" dir="auto">
+      <button type="submit" class="search-submit" aria-label="Search">
+        <i class="icon" aria-hidden="true"></i>
+      </button>
+      <a class="ua-top-nav-heart" aria-label="Link to My Favorites" href="#">
+        <span class="top-nav-favorites-icon gs-heart--top-nav gs-action--favorite gs-heart-action--inactive">
+          <i class="gs-heart-nav-outline icon--heart-nav-outline"></i>
+        </span>
+      </a>
+      <a class="bag" aria-label="0 items in Shopping Bag" href="#">
+        <i class="icon bag-icon" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="col-12 d-sm-none mega-menu-mobile">
+  <div class="d-flex" [ngClass]="{'active-mobile-menu': isMegaMenuOpen}">
+    <div class="icons-container">
+      <span class="nav-list-mobile-icon" (click)="isMegaMenuOpen = !isMegaMenuOpen"></span>
+      <a href="#" aria-label="Search">
+        <i class="icon search-icon" aria-hidden="true"></i>
+      </a>
+    </div>
+    <a href="#" class="logo text-center">
+      <i class="icon logo-icon"></i>
+    </a>
+    <div class="icons-container d-flex right-icons">
+      <a class="bag" aria-label="0 items in Shopping Bag" href="#">
+        <i class="icon bag-icon" aria-hidden="true"></i>
+      </a>
+      <a class="ua-top-nav-heart" aria-label="Link to My Favorites" href="#">
+        <span class="top-nav-favorites-icon gs-heart--top-nav gs-action--favorite gs-heart-action--inactive">
+          <i class="gs-heart-nav-outline icon--heart-nav-outline"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+  <ul class="mega-menu-mobile-items" [ngClass]="{'d-none': !isMegaMenuOpen}">
+    <li class="mobile-menu-item" *ngFor="let menu of megaMenu | async">
+      <a href="#">
+        <span>{{menu.menuTitle}}</span>
+      </a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,11 @@
+<div class="row no-margin">
+    <div class="col-12 text-center d-flex d-md-block header-bar">
+      <span>FREE Shipping On All Orders INR 14,055.26+. Duties & Taxes Calculated at Checkout</span>
+      <select class="float-right" #t (change)="callType(t.value)">
+        <option *ngFor="let countries of headerBar | async" value={{countries.countryName}}>
+            {{countries.countryName}}
+        </option>
+      </select>
+    </div>
+</div>
+  
